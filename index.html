@@ -1,71 +1,532 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soluiton</title>
-    <link rel="stylesheet" href="style/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soluiton Software</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS CSS (Animate on Scroll) -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Bootstrap CSS ve Simge Bağlantısı -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    /* Genel Stil */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #20232a;
+    }
+
+    header {
+      background: linear-gradient(135deg, #14213d, #0012b3, #450000);
+      color: #ffffff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo-img {
+  width: 300px;
+  height: 80px;
+}
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      color: #f77f00;
+    }
+
+    /* Kartlar ve Animasyon */
+    .technology-card, .service-card {
+      background-color: #282c34;
+      border: none;
+      color: #adb5bd;
+      padding: 1.5rem;
+      border-radius: 12px;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .technology-card:hover, .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .technology-logo {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+
+    .btn-custom {
+      background-color: #fff;
+      border-color: #000;
+    }
+
+    footer {
+      background-color: #14213d;
+      color: #adb5bd;
+      padding: 2rem 0;
+    }
+
+    a, .btn, .card-title {
+      color: #f77f00 !important;
+    }
+
+    /* Navbar Renk ve Efekt Stilleri */
+    .navbar-custom {
+      background-color: transparent;
+    }
+
+    .navbar-custom .navbar-nav .nav-link {
+      color: #fff !important;
+      transition: color 0.3s, background-color 0.3s;
+      padding: 8px 15px;
+      border-radius: 5px;
+    }
+
+    .navbar-custom .navbar-nav .nav-link:hover {
+      color: #fff !important;
+      background-color: rgba(69, 0, 0, 0.5);
+      transition: color 0.9s, background-color 1.4s;
+    }
+
+    .navbar-custom .navbar-nav .nav-link.active {
+      color: #ffffff !important;
+      background-color: rgba(69, 0, 0, 0.5);
+    }
+
+    .navbar-custom .navbar-toggler-icon {
+      filter: brightness(0) invert(1);
+    }
+
+    /* Dil Switch Buton Stili */
+    .language-switch {
+      display: flex;
+      align-items: center;
+      width: 65px;
+      height: 30px;
+      background-color: rgba(69,0,0,0.5);
+      border: none;
+      border-radius: 15px;
+      position: relative;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .toggle-button {
+      width: 26px;
+      height: 26px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: left 0.3s;
+    }
+
+    .language-switch.active {
+      background-color: #0012b3;
+    }
+
+    .language-switch.active .toggle-button {
+      left: 32px; /* Buton sağa kayacak */
+    }
+
+    .language-switch-text {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: bold;
+      color: #ffffff;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .language-switch-text.eng {
+      left: 30px;
+    }
+
+    .language-switch-text.tr {
+      right: 40px;
+      display: none;
+    }
+
+    .language-switch.active .language-switch-text.eng {
+      display: none;
+    }
+
+    .language-switch.active .language-switch-text.tr {
+      display: block;
+    }
+
+    /* Carousel özel geçiş efekti */
+.carousel-item {
+  transition: transform 1s ease, opacity 1s ease;
+  opacity: 0;
+  transform: scale(0.9) translateX(100px);
+  height: auto;
+  padding: 1rem;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  transform: scale(1) translateX(0);
+}
+
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item-next {
+  transform: scale(0.9) translateX(100px);
+  opacity: 0;
+}
+
+.carousel-item-prev {
+  transform: scale(0.9) translateX(-100px);
+  opacity: 0;
+}
+
+.carousel-item-start.carousel-item-next,
+.carousel-item-end.carousel-item-prev {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  transition: filter 0.4s ease;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+  filter: blur(0);
+}
+
+#technologies {
+  margin-top: 100px;
+}
+
+#services {
+  margin-top: 100px;
+  height: 500px;
+}
+/* Responsice Bölümü */
+@media (max-width: 768px) {
+  .logo-img {
+    width: 150px;
+    height: auto;
+  }
+  .language-switch {
+    width: 50px;
+    height: 25px;
+  }
+  .language-switch .toggle-button {
+    width: 22px;
+    height: 22px;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
+  header p {
+    font-size: 1rem;
+  }
+  .carousel-item {
+    height: auto;
+    padding: 2rem 0;
+  }
+  footer {
+    text-align: center;
+    padding: 1rem 0;
+  }
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/solLogo.png" alt="Soluiton Logo">
+
+  <!-- Navbar Başlangıç -->
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html">
+        <img src="solLogo.png" alt="Logo" class="d-inline-block align-text-top logo-img">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html" data-key="nav_home">Anasayfa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about" data-key="nav_about">Hakkımızda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services" data-key="nav_services">Hizmetlerimiz</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact" data-key="nav_contact">İletişim</a>
+          </li>
+        </ul>
+        <!-- Dil Seçici Switch -->
+        <div class="language-switch ms-3" id="languageSwitch">
+          <div class="toggle-button"></div>
+          <span class="language-switch-text eng">ENG</span>
+          <span class="language-switch-text tr">TR</span>
         </div>
-    </header>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar Bitiş -->
 
-        <label class="switch">
-            <input type="checkbox" id="language-toggle">
-            <span class="slider round">
-                <h1 class="lang">ENG</h1>
-            </span>
-          </label>
+  <!-- Başlık Bölümü -->
+  <header>
+    <div>
+      <h1 data-aos="fade-up" data-aos-duration="1000" data-key="header_title">Hayallerinizi geleceğe {kod}luyoruz</h1>
+      <p class="lead" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-key="header_description">Çözümlerin ötesinde, hayallerinizi dijital dünyada canlandırıyoruz</p>
+      <a href="#services" class="btn btn-lg btn-light mt-4 btn-custom" style="color: #0012b3 !important;" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000" data-key="btn_start">Birlikte Başaralım</a>
+    </div>
+  </header>
 
-    <section class="main-content">
-        <div class="intro">
-      <p>Soliton doesn’t just solve your problems it weaves your
-  dreams into every line of code. With a vision beyond solutions,
-  we bring your aspirations to life in the digital world.</p>
+ <!-- Kullandığımız Teknolojiler Bölümü -->
+ <section id="technologies" class="container py-5">
+  <h2 class="section-title text-center" data-aos="fade-down" data-key="technologies_title">Kullandığımız Teknolojiler</h2>
+  <div class="row text-center">
+    <div class="col-12 col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+      <div class="card technology-card">
+        <img src="https://img.icons8.com/color/48/000000/html-5.png" class="technology-logo" alt="HTML5 Logo">
+        <h4 class="my-3" data-key="tech_html">HTML & CSS</h4>
+        <p data-key="tech_html_desc">Modern ve duyarlı tasarımlar için temel yapı taşları.</p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+      <div class="card technology-card">
+        <img src="https://img.icons8.com/color/48/000000/javascript.png" class="technology-logo" alt="JavaScript Logo">
+        <h4 class="my-3" data-key="tech_js">JavaScript</h4>
+        <p data-key="tech_js_desc">Etkileşimli ve dinamik kullanıcı arayüzleri.</p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
+      <div class="card technology-card">
+        <img src="https://img.icons8.com/color/48/000000/react-native.png" class="technology-logo" alt="React Logo">
+        <h4 class="my-3" data-key="tech_react">React</h4>
+        <p data-key="tech_react_desc">Karmaşık uygulamalar için güçlü bir front-end kütüphanesi.</p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+      <div class="card technology-card">
+        <img src="https://img.icons8.com/color/48/000000/dart.png" class="technology-logo" alt="Dart Logo">
+        <h4 class="my-3" data-key="tech_dart">Dart</h4>
+        <p data-key="tech_dart_desc">Mobil uygulama için modern tasarımlar</p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="500">
+      <div class="card technology-card">
+        <img src="https://img.icons8.com/color/48/000000/bootstrap.png" class="technology-logo" alt="Bootstrap Logo">
+        <h4 class="my-3" data-key="tech_bootstrap">Bootstrap</h4>
+        <p data-key="tech_bootstrap_desc">Duyarlı ve mobil uyumlu arayüz tasarımları.</p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="600">
+      <div class="card technology-card">
+        <img src="https://img.icons8.com/color/48/000000/python.png" class="technology-logo" alt="Python Logo">
+        <h4 class="my-3" data-key="tech_python">Python</h4>
+        <p data-key="tech_python_desc">Python ile ihtiyacınız olan her şey.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Verdiğimiz Hizmetler Bölümü -->
+<section id="services" class="vh-95">
+  <h2 class="section-title text-center" data-aos="fade-down" data-key="services_title">Verdiğimiz Hizmetler</h2>
+  <div id="serviceCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <!-- Web Geliştirme Kartı -->
+      <div class="carousel-item active vh-50 d-flex justify-content-center align-items-center">
+        <div class="service-card text-center p-5" data-aos="fade-down" style="background-color: rgba(0, 0, 0, 0.7); border-radius: 20px; width: 80%; max-width: 600px;">
+          <i class="bi bi-laptop display-1 text-primary mb-4"></i>
+          <h2 class="text-white" data-key="service_web">Web Geliştirme</h2>
+          <p class="text-white-50" data-key="service_web_desc">Yaratıcı ve kullanıcı dostu web çözümleri ile işinizi büyütün.</p>
         </div>
-
-        <div class="tech-section">
-            <div class="tech-card"><img src="images/web.png" alt="Figma">
-            </div>
-            <div class="tech-card"><img src="images/python.png" alt="Python">
-            </div>
-            <div class="tech-card"><img src="images/flutter.png" alt="Flutter">
-            </div>
-            <div class="java"><img src="images/java.png" alt="Java" height="230">
-            </div>
+      </div>
+      <!-- Mobil Uygulama Kartı -->
+      <div class="carousel-item vh-50 d-flex justify-content-center align-items-center">
+        <div class="service-card text-center p-5" style="background-color: rgba(0, 0, 0, 0.7); border-radius: 20px; width: 80%; max-width: 600px;">
+          <i class="bi bi-phone display-1 text-primary mb-4"></i>
+          <h2 class="text-white" data-key="service_mobile">Mobil Uygulama</h2>
+          <p class="text-white-50" data-key="service_mobile_desc">Mobil platformlarda kullanıcıya ulaşmanın en hızlı yolunu keşfedin.</p>
         </div>
-        <button class="tech-button"><h1>Our Technologies</h1></button>
-    </section>
+      </div>
+      <!-- Dijital Pazarlama Kartı -->
+      <div class="carousel-item vh-50 d-flex justify-content-center align-items-center">
+        <div class="service-card text-center p-5" style="background-color: rgba(0, 0, 0, 0.7); border-radius: 20px; width: 80%; max-width: 600px;">
+          <i class="bi bi-bar-chart display-1 text-primary mb-4"></i>
+          <h2 class="text-white" data-key="service_digital_marketing">Dijital Pazarlama</h2>
+          <p class="text-white-50" data-key="service_digital_marketing_desc">Markanızı dijital dünyada ön plana çıkaracak stratejiler.</p>
+        </div>
+      </div>
+      <!-- E-Ticaret Çözümleri Kartı -->
+      <div class="carousel-item vh-50 d-flex justify-content-center align-items-center">
+        <div class="service-card text-center p-5" style="background-color: rgba(0, 0, 0, 0.7); border-radius: 20px; width: 80%; max-width: 600px;">
+          <i class="bi bi-basket display-1 text-primary mb-4"></i>
+          <h2 class="text-white" data-key="service_ecommerce">E-Ticaret Çözümleri</h2>
+          <p class="text-white-50" data-key="service_ecommerce_desc">Online satışlarınızı artırmak için özel e-ticaret çözümleri.</p>
+        </div>
+      </div>
+      <!-- SEO ve Analitik Kartı -->
+      <div class="carousel-item vh-50 d-flex justify-content-center align-items-center">
+        <div class="service-card text-center p-5" style="background-color: rgba(0, 0, 0, 0.7); border-radius: 20px; width: 80%; max-width: 600px;">
+          <i class="bi bi-graph-up display-1 text-primary mb-4"></i>
+          <h2 class="text-white" data-key="service_seo">SEO ve Analitik</h2>
+          <p class="text-white-50" data-key="service_seo_desc">Web sitenizi arama motorlarında üst sıralara taşıyın.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Carousel Kontrolleri -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#serviceCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Önceki</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#serviceCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Sonraki</span>
+    </button>
+  </div>
+</section>
 
-    <section class="services">
-        <h2>OUR SERVICES</h2>
-    </section><br>
-    <button class="services-button">Button</button>
-<br><br><br>
-    <footer>
-        <p>FOOTER</p>
-    </footer>
+<!-- Footer -->
+<footer class="text-center py-5" style="background-color: #14213d; color: #adb5bd; border-top: 4px solid #f77f00;">
+  <div class="container">
+    <!-- İletişim Bilgileri -->
+    <div class="mb-4">
+      <h5 style="color: #f77f00; font-weight: bold;">İletişim</h5>
+      <p class="mb-1">info@soluiton.com</p>
+      <p class="mb-1">+90 531 308 18 61</p>
+      <p class="mb-1">+90 534 443 96 96</p>
+    </div>
+    <!-- Çizgi -->
+    <hr style="border-color: #f77f00; margin: 2rem 0;">
+    <!-- Telif Hakkı -->
+    <p data-key="footer_text">&copy; 2024 Tüm Hakları Saklıdır.</p>
+    <p data-key="footer_company" class="mb-0">Soluiton Software A.Ş.</p>
+  </div>
+</footer>
 
-    <aside class="navbar">
-        <a href="#home">Home</a>
-        <a href="#services">Our Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact Us</a>
-    </aside>
-
-    <script>
-// JavaScript kodu
-document.getElementById("language-toggle").addEventListener("change", function() {
-    const langText = document.querySelector(".lang");
-    if (this.checked) {
-        langText.textContent = "TR";
-    } else {
-        langText.textContent = "ENG";
-    }
+  <!-- Bootstrap JS ve AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+  duration: 1200,
+  once: true
 });
-    </script>
+
+// Dil Seçici Buton Kontrolü
+const languageSwitch = document.getElementById('languageSwitch');
+languageSwitch.addEventListener('click', () => {
+  const isActive = languageSwitch.classList.toggle('active');
+  const lang = isActive ? 'eng' : 'tr';
+  updateLanguage(lang);
+});
+
+// Dil Güncelleme Fonksiyonu
+function updateLanguage(lang) {
+  document.querySelectorAll('[data-key]').forEach((element) => {
+    const key = element.getAttribute('data-key');
+    element.textContent = translations[lang][key];
+  });
+}
+
+    //Dil Seçimi İçin Data-Key Çevirileri
+    const translations = {
+  tr: {
+    nav_home: "Anasayfa",
+    nav_about: "Hakkımızda",
+    nav_services: "Hizmetlerimiz",
+    nav_contact: "İletişim",
+    header_title: "Hayallerinizi geleceğe {kod}luyoruz",
+    header_description: "Çözümlerin ötesinde, hayallerinizi dijital dünyada canlandırıyoruz",
+    btn_start: "Birlikte Başaralım",
+    technologies_title: "Kullandığımız Teknolojiler",
+    tech_html: "HTML & CSS",
+    tech_html_desc: "Modern ve duyarlı tasarımlar için temel yapı taşları.",
+    tech_js: "JavaScript",
+    tech_js_desc: "Etkileşimli ve dinamik kullanıcı arayüzleri.",
+    tech_react: "React",
+    tech_react_desc: "Karmaşık uygulamalar için güçlü bir front-end kütüphanesi.",
+    tech_dart: "Dart",
+    tech_dart_desc: "Mobil uygulama için modern tasarımlar",
+    tech_bootstrap: "Bootstrap",
+    tech_bootstrap_desc: "Duyarlı ve mobil uyumlu arayüz tasarımları.",
+    tech_python: "Python",
+    tech_python_desc: "Python ile ihtiyacınız olan her şey.",
+    services_title: "Verdiğimiz Hizmetler",
+    service_web: "Web Geliştirme",
+    service_web_desc: "Yaratıcı ve kullanıcı dostu web çözümleri ile işinizi büyütün.",
+    service_mobile: "Mobil Uygulama",
+    service_mobile_desc: "Mobil platformlarda kullanıcıya ulaşmanın en hızlı yolunu keşfedin.",
+    service_digital_marketing: "Dijital Pazarlama",
+    service_digital_marketing_desc: "Markanızı dijital dünyada ön plana çıkaracak stratejiler.",
+    service_ecommerce: "E-Ticaret Çözümleri",
+    service_ecommerce_desc: "Online satışlarınızı artırmak için özel e-ticaret çözümleri.",
+    service_seo: "SEO ve Analitik",
+    service_seo_desc: "Web sitenizi arama motorlarında üst sıralara taşıyın.",
+    footer_text: "© 2024 Tüm Hakları Saklıdır.",
+    footer_company: "Soluiton Software A.Ş."
+  },
+  eng: {
+    nav_home: "Home",
+    nav_about: "About Us",
+    nav_services: "Our Services",
+    nav_contact: "Contact",
+    header_title: "We {code} your dreams into the future",
+    header_description: "Beyond solutions, we bring your dreams to life in the digital world",
+    btn_start: "Let's Achieve Together",
+    technologies_title: "Technologies We Use",
+    tech_html: "HTML & CSS",
+    tech_html_desc: "Fundamentals for modern and responsive designs.",
+    tech_js: "JavaScript",
+    tech_js_desc: "Interactive and dynamic user interfaces.",
+    tech_react: "React",
+    tech_react_desc: "A powerful front-end library for complex applications.",
+    tech_dart: "Dart",
+    tech_dart_desc: "Modern designs for mobile applications.",
+    tech_bootstrap: "Bootstrap",
+    tech_bootstrap_desc: "Responsive and mobile-friendly interface designs.",
+    tech_python: "Python",
+    tech_python_desc: "Everything you need with Python.",
+    services_title: "Our Services",
+    service_web: "Web Development",
+    service_web_desc: "Expand your business with creative, user-friendly web solutions.",
+    service_mobile: "Mobile Application",
+    service_mobile_desc: "Reach users on mobile platforms quickly.",
+    service_digital_marketing: "Digital Marketing",
+    service_digital_marketing_desc: "Strategies to make your brand stand out digitally.",
+    service_ecommerce: "E-Commerce Solutions",
+    service_ecommerce_desc: "Special e-commerce solutions to increase your online sales.",
+    service_seo: "SEO & Analytics",
+    service_seo_desc: "Boost your website ranking on search engines.",
+    footer_text: "© 2024 All Rights Reserved.",
+    footer_company: "Soluiton Software Inc."
+  }
+};
+
+  </script>
 </body>
-</html> 
+</html>
