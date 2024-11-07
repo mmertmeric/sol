@@ -24,7 +24,7 @@ body {
 
 /* Navbar Renk ve Efekt Stilleri */
 .navbar-custom {
-      background-color: transparent;
+      background-color: #0012b34d
     }
 
     .navbar-custom .navbar-nav .nav-link {
@@ -109,6 +109,33 @@ body {
       display: block;
     }
 
+    .kimiz {
+      margin-top: 100px;
+      height: 500px;;
+    }
+
+    .kimiz-yazi {
+      font-size: x-large;
+    }
+
+    .vizyon {
+      margin-top: 100px;
+      height: 500px;;
+    }
+
+    .vizyon-yazi {
+      font-size: x-large;
+    }
+
+    .tercih {
+      margin-top: 100px;
+      height: 500px;;
+    }
+
+    .tercih-yazi {
+      font-size: x-large;
+    }
+
 </style>
 
 </head>
@@ -127,16 +154,16 @@ body {
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html" data-key="nav_home">Anasayfa</a>
+            <a class="nav-link" href="index.html" data-key="nav_home">Anasayfa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html" data-key="nav_about">Hakkımızda</a>
+            <a class="nav-link active" href="about.html" data-key="nav_about">Hakkımızda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#services" data-key="nav_services">Hizmetlerimiz</a>
+            <a class="nav-link" href="services.html" data-key="nav_services">Hizmetlerimiz</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#contact" data-key="nav_contact">İletişim</a>
+            <a class="nav-link" href="contact.html" data-key="nav_contact">İletişim</a>
           </li>
         </ul>
         <!-- Dil Seçici Switch -->
@@ -151,27 +178,79 @@ body {
   <!-- Navbar Bitiş -->
     
 
+  <section class="container py-5" style="color: #ffffff;">
+    <!-- Biz Kimiz Bölümü -->
+     <br><br>
+    <div class=" kimiz d-flex align-items-center p-4 mb-5" style="background-color: rgba(0, 0, 0, 0.4); border-radius: 15px;" data-aos="fade-up">
+      <div class="me-4" style="flex-shrink: 0;;">
+        <div style="width: 250px; height: 250px; background-color: #333; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+          <img src="software-img.jpg" alt="Biz Kimiz Görsel" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+        </div>
+      </div>
+      <div class="kimiz-yazi">
+        <h2 class="mb-3" style="color: #f77f00;" data-key="kimiz_title">Biz Kimiz?</h2>
+        <p data-key="kimiz_text">Soluiton Software A.Ş., inovatif yazılım çözümleri sunan ve teknoloji alanında öncü projelerle adını duyuran bir yazılım şirketidir. Profesyonel ekibimizle müşteri odaklı çözümler geliştiriyor, her projemizde kalite ve güveni ön planda tutuyoruz.</p>
+      </div>
+    </div>
+
+    <br><br>
+  
+    <!-- Vizyon ve Misyon Bölümü -->
+    <div class="vizyon d-flex align-items-center p-4 mb-5" style="background-color: rgba(0, 0, 0, 0.4); border-radius: 15px;" data-aos="fade-left">
+      <div class="me-4" style="flex-shrink: 0;">
+        <div style="width: 250px; height: 250px; background-color: #333; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+          <img src="software-img2.jpg" alt="Vizyon ve Misyon Görsel" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+        </div>
+      </div>
+      <div class="vizyon-yazi">
+        <h2 class="mb-3" style="color: #f77f00;" data-key="vizyon_title">Vizyon ve Misyon</h2>
+        <p data-key="vizyon_text1"><strong>Vizyonumuz:</strong> Dijital dünyada fark yaratan yazılım çözümleriyle sektörde öncü ve globalde tanınan bir marka olmak.</p>
+        <p data-key="vizyon_ftext2"><strong>Misyonumuz:</strong> Müşterilerimizin ihtiyaçlarına en uygun çözümleri sunarak, onların iş hedeflerine ulaşmalarını kolaylaştırmak ve sürdürülebilir bir değer yaratmak.</p>
+      </div>
+    </div>
+
+    <br><br>
+  
+    <!-- Neden Bizi Tercih Etmelisiniz Bölümü -->
+    <div class=" tercih d-flex align-items-center p-4" style="background-color: rgba(0, 0, 0, 0.4); border-radius: 15px;" data-aos="fade-left">
+      <div class="me-4" style="flex-shrink: 0;">
+        <div style="width: 250px; height: 250px; background-color: #333; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+          <img src="deal.jpg" alt="Tercih Etmelisiniz Görsel" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+        </div>
+      </div>
+      <div class="tercih-yazi">
+        <h2 class="mb-3" style="color: #f77f00;" data-key="tercih_title">Neden Bizi Tercih Etmelisiniz?</h2>
+        <ul style="list-style: none; padding-left: 0;">
+          <li data-key="tercih_text1"><i class="bi bi-check-circle-fill" style="color: #f77f00;"></i> <strong>Uzman Kadro:</strong> Alanında deneyimli ve yenilikçi bir ekiple çalışıyoruz.</li>
+          <li data-key="tercih_text2"><i class="bi bi-check-circle-fill" style="color: #f77f00;"></i> <strong>Yenilikçi Yaklaşım:</strong> En güncel teknolojileri kullanarak yaratıcı çözümler sunuyoruz.</li>
+          <li data-key="tercih_text3=""><i class="bi bi-check-circle-fill" style="color: #f77f00;"></i> <strong>Müşteri Odaklı Hizmet:</strong> İhtiyaçlarınıza göre özel çözümler geliştiriyoruz.</li>
+          <li data-key="tercih_text4=""><i class="bi bi-check-circle-fill" style="color: #f77f00;"></i> <strong>Güven ve Şeffaflık:</strong> Proje sürecinde tam şeffaflıkla hareket ediyoruz.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+<br><br><br>
 
 
 
   
 <!-- Footer -->
 <footer class="text-center py-5" style="background-color: #14213d; color: #adb5bd; border-top: 4px solid #f77f00;">
-    <div class="container">
-      <!-- İletişim Bilgileri -->
-      <div class="mb-4">
-        <h5 style="color: #f77f00; font-weight: bold;">İletişim</h5>
-        <p class="mb-1">info@soluiton.com</p>
-        <p class="mb-1">+90 531 308 18 61</p>
-        <p class="mb-1">+90 534 443 96 96</p>
-      </div>
-      <!-- Çizgi -->
-      <hr style="border-color: #f77f00; margin: 2rem 0;">
-      <!-- Telif Hakkı -->
-      <p data-key="footer_text">&copy; 2024 Tüm Hakları Saklıdır.</p>
-      <p data-key="footer_company" class="mb-0">Soluiton Software A.Ş.</p>
+  <div class="container">
+    <!-- İletişim Bilgileri -->
+    <div class="mb-4">
+      <h5 style="color: #f77f00; font-weight: bold;">İletişim</h5>
+      <p class="mb-1">info@soluiton.com</p>
+      <p class="mb-1">+90 531 308 18 61</p>
+      <p class="mb-1">+90 534 443 96 96</p>
     </div>
-  </footer>
+    <!-- Çizgi -->
+    <hr style="border-color: #f77f00; margin: 2rem 0;">
+    <!-- Telif Hakkı -->
+    <p data-key="footer_text">&copy; 2024 Tüm Hakları Saklıdır.</p>
+    <p data-key="footer_company" class="mb-0">Soluiton Software A.Ş.</p>
+  </div>
+</footer>
 
 
 
@@ -181,22 +260,70 @@ body {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
 
-  <script>// Dil Seçici Buton Kontrolü
-    const languageSwitch = document.getElementById('languageSwitch');
-    languageSwitch.addEventListener('click', () => {
-      const isActive = languageSwitch.classList.toggle('active');
-      const lang = isActive ? 'eng' : 'tr';
-      updateLanguage(lang);
-    });
-    
-    // Dil Güncelleme Fonksiyonu
-    function updateLanguage(lang) {
-      document.querySelectorAll('[data-key]').forEach((element) => {
-        const key = element.getAttribute('data-key');
-        element.textContent = translations[lang][key];
-      });
-    }
-    
+
+  <script>
+ // İngilizce ve Türkçe metinleri içeren çeviri nesnesi
+const translations = {
+  tr: {
+    nav_home: "Anasayfa",
+    nav_about: "Hakkımızda",
+    nav_services: "Hizmetlerimiz",
+    nav_contact: "İletişim",
+    kimiz_title: "Biz Kimiz?",
+    kimiz_text: "Soluiton Software A.Ş., inovatif yazılım çözümleri sunan ve teknoloji alanında öncü projelerle adını duyuran bir yazılım şirketidir. Profesyonel ekibimizle müşteri odaklı çözümler geliştiriyor, her projemizde kalite ve güveni ön planda tutuyoruz.",
+    vizyon_title: "Vizyon ve Misyon",
+    vizyon_text1: "Vizyonumuz: Dijital dünyada fark yaratan yazılım çözümleriyle sektörde öncü ve globalde tanınan bir marka olmak.",
+    vizyon_text2: "Misyonumuz: Müşterilerimizin ihtiyaçlarına en uygun çözümleri sunarak, onların iş hedeflerine ulaşmalarını kolaylaştırmak ve sürdürülebilir bir değer yaratmak.",
+    tercih_title: "Neden Bizi Tercih Etmelisiniz?",
+    tercih_text1: "Uzman Kadro: Alanında deneyimli ve yenilikçi bir ekiple çalışıyoruz.",
+    tercih_text2: "Yenilikçi Yaklaşım: En güncel teknolojileri kullanarak yaratıcı çözümler sunuyoruz.",
+    tercih_text3: "Müşteri Odaklı Hizmet: İhtiyaçlarınıza göre özel çözümler geliştiriyoruz.",
+    tercih_text4: "Güven ve Şeffaflık: Proje sürecinde tam şeffaflıkla hareket ediyoruz.",
+    footer_text: "© 2024 Tüm Hakları Saklıdır.",
+    footer_company: "Soluiton Software A.Ş."
+  },
+  eng: {
+    nav_home: "Home",
+    nav_about: "About Us",
+    nav_services: "Our Services",
+    nav_contact: "Contact",
+    kimiz_title: "Who Are We?",
+    kimiz_text: "Soluiton Software Inc. is a software company known for its innovative software solutions and leading projects in the tech field. We develop customer-focused solutions with our professional team, prioritizing quality and trust in every project.",
+    vizyon_title: "Vision and Mission",
+    vizyon_text1: "Our Vision: To become a leading and globally recognized brand in the industry by providing software solutions that make a difference in the digital world.",
+    vizyon_text2: "Our Mission: To provide the most suitable solutions to meet our clients' needs, helping them achieve their business goals and create sustainable value.",
+    tercih_title: "Why Choose Us?",
+    tercih_text1: "Expert Team: We work with an experienced and innovative team in the field.",
+    tercih_text2: "Innovative Approach: We offer creative solutions using the latest technologies.",
+    tercih_text3: "Customer-Oriented Service: We develop custom solutions tailored to your needs.",
+    tercih_text4: "Trust and Transparency: We operate with full transparency throughout the project process.",
+    footer_text: "© 2024 All Rights Reserved.",
+    footer_company: "Soluiton Software Inc."
+  }
+};
+
+// Dil Seçici Buton Kontrolü
+const languageSwitch = document.getElementById('languageSwitch');
+languageSwitch.addEventListener('click', () => {
+  const isActive = languageSwitch.classList.toggle('active');
+  const lang = isActive ? 'eng' : 'tr';
+  updateLanguage(lang);
+});
+
+// Dil Güncelleme Fonksiyonu
+function updateLanguage(lang) {
+  document.querySelectorAll('[data-key]').forEach((element) => {
+    const key = element.getAttribute('data-key');
+    element.textContent = translations[lang][key];
+  });
+}
+
+// AOS Animasyonları Başlatma
+AOS.init({
+  duration: 1000,
+  once: true,
+});
+
     
     </script>
 </body>

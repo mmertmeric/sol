@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+      <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS CSS (Animate on Scroll) -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Bootstrap CSS ve Simge Bağlantısı -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #20232a;
+  }
+
+  .logo-img {
+width: 300px;
+height: 80px;
+}
+
+/* Navbar Renk ve Efekt Stilleri */
+.navbar-custom {
+    background-color: #0012b34d
+  }
+
+  .navbar-custom .navbar-nav .nav-link {
+    color: #fff !important;
+    transition: color 0.3s, background-color 0.3s;
+    padding: 8px 15px;
+    border-radius: 5px;
+  }
+
+  .navbar-custom .navbar-nav .nav-link:hover {
+    color: #fff !important;
+    background-color: rgba(69, 0, 0, 0.5);
+    transition: color 0.9s, background-color 1.4s;
+  }
+
+  .navbar-custom .navbar-nav .nav-link.active {
+    color: #ffffff !important;
+    background-color: rgba(69, 0, 0, 0.5);
+  }
+
+  .navbar-custom .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Dil Switch Buton Stili */
+  .language-switch {
+    display: flex;
+    align-items: center;
+    width: 65px;
+    height: 30px;
+    background-color: rgba(69,0,0,0.5);
+    border: none;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .toggle-button {
+    width: 26px;
+    height: 26px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: left 0.3s;
+  }
+
+  .language-switch.active {
+    background-color: #0012b3;
+  }
+
+  .language-switch.active .toggle-button {
+    left: 32px; /* Buton sağa kayacak */
+  }
+
+  .language-switch-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 14px;
+    transition: color 0.3s;
+  }
+
+  .language-switch-text.eng {
+    left: 30px;
+  }
+
+  .language-switch-text.tr {
+    right: 40px;
+    display: none;
+  }
+
+  .language-switch.active .language-switch-text.eng {
+    display: none;
+  }
+
+  .language-switch.active .language-switch-text.tr {
+    display: block;
+  }
+
+/* Her kutunun başlangıç stili */
+/* Genel hizmet kutusu stili */
+.service-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease-in-out; /* Boyut ve pozisyon geçişi */
+  transform-origin: center; /* Merkezi büyüme efekti için */
+}
+
+.service-box:hover {
+  transform: scale(1.1); /* Boyut düştürme efekti için */
+}
+
+/* Tam ekran olduğunda stil */
+.service-box.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.5s ease-in-out; /* Geçiş efekti */
+  transform: scale(1.1); /* Hafif büyütme efekti */
+}
+
+/* Başlık ve açıklama geçişleri */
+.service-box h3,
+.service-box p {
+  transition: opacity 0.5s ease-in-out;
+  color: #fff;
+  background-color: rgba(0, 0, 0,0.5);
+  margin-bottom: 600px;
+  border-radius: 30px;
+}
+.service-box p {
+    display: none;
+}
+
+/* Tam ekran olduğunda başlık gizlenir, açıklama alt merkeze taşınır */
+.service-box.fullscreen h3 {
+  opacity: 0; /* Yumuşak geçişle başlık gizlenir */
+}
+
+.service-box.fullscreen p {
+  position: absolute;
+  font-size: 24px;
+  top: 600px;
+  opacity: 1;
+  transition: all 0.5s ease-in-out; /* Geçiş efekti */
+  display: block;
+}
+
+  #services {
+    margin-top:110px;
+    height: 800px;
+  }
+
+  /* Bildirim mesajı stili */
+.notification {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 2000;
+}
+
+/* Bildirimin görünür olma durumu */
+.notification.show {
+  opacity: 1;
+}
+
+</style>
+
+</head>
+
+<body>
+     <!-- Navbar Başlangıç -->
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html">
+        <img src="solLogo.png" alt="Logo" class="d-inline-block align-text-top logo-img">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" data-key="nav_home">Anasayfa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html" data-key="nav_about">Hakkımızda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="services.html" data-key="nav_services">Hizmetlerimiz</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html" data-key="nav_contact">İletişim</a>
+          </li>
+        </ul>
+        <!-- Dil Seçici Switch -->
+        <div class="language-switch ms-3" id="languageSwitch">
+          <div class="toggle-button"></div>
+          <span class="language-switch-text eng">ENG</span>
+          <span class="language-switch-text tr">TR</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar Bitiş -->
+    
+
+  <section id="services" class="d-flex flex-row vh-100">
+    <!-- Kategori 1 -->
+    <div class="service-box flex-fill text-center text-white" style="background-image: url('web.jpg'); background-size: cover; background-position:center;">
+      <h3 class="p-4" data-key="web_title">Web Geliştirme</h3>
+      <p class="service-text p-4" data-key="web_text">Yaratıcı ve kullanıcı dostu web çözümleri ile işinizi büyütün.</p>
+    </div>
+  
+    <!-- Kategori 2 -->
+<div class="service-box flex-fill text-center text-white" style="background-image: url('mobile.webp'); background-size: cover; background-position: center;">
+    <h3 class="p-4" data-key="mobile_title">Mobil Uygulama</h3>
+    <p class="service-text p-4" data-key="mobile_text">Mobil platformlarda kullanıcıya ulaşmanın en hızlı yolunu keşfedin.</p>
+  </div>
+  
+    <!-- Kategori 3 -->
+    <div class="service-box flex-fill text-center text-white" style="background-image: url('dijital.jpg'); background-size: cover; background-position: center;">
+      <h3 class="p-4" data-key="dijital_title">Dijital Pazarlama</h3>
+      <p class="service-text p-4" data-key="dijital_text">Markanızı dijital dünyada ön plana çıkaracak stratejiler.</p>
+    </div>
+  
+    <!-- Kategori 4 -->
+    <div class="service-box flex-fill text-center text-white" style="background-image: url('eticaret.jpg'); background-size: cover; background-position: center;">
+      <h3 class="p-4" data-key="e_title">E-Ticaret Çözümleri</h3>
+      <p class="service-text p-4" data-key="e_text">Online satışlarınızı artırmak için özel e-ticaret çözümleri.</p>
+    </div>
+  
+    <!-- Kategori 5 -->
+    <div class="service-box flex-fill text-center text-white" style="background-image: url('seo.jpg'); background-size: cover; background-position: center;">
+      <h3 class="p-4" data-key="seo_title">SEO ve Analitik</h3>
+      <p class="service-text p-4" data-key="seo_text">Web sitenizi arama motorlarında üst sıralara taşıyın.</p>
+    </div>
+  </section>
+
+
+
+  
+<!-- Footer -->
+<footer class="text-center py-5" style="background-color: #14213d; color: #adb5bd; border-top: 4px solid #f77f00;">
+    <div class="container">
+      <!-- İletişim Bilgileri -->
+      <div class="mb-4">
+        <h5 style="color: #f77f00; font-weight: bold;">İletişim</h5>
+        <p class="mb-1">info@soluiton.com</p>
+        <p class="mb-1">+90 531 308 18 61</p>
+        <p class="mb-1">+90 534 443 96 96</p>
+      </div>
+      <!-- Çizgi -->
+      <hr style="border-color: #f77f00; margin: 2rem 0;">
+      <!-- Telif Hakkı -->
+      <p data-key="footer_text">&copy; 2024 Tüm Hakları Saklıdır.</p>
+      <p data-key="footer_company" class="mb-0">Soluiton Software A.Ş.</p>
+    </div>
+  </footer>
+
+
+  
+
+
+
+
+
+<!-- Bootstrap JS ve AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+<script>
+// Çeviri nesnesi: Türkçe ve İngilizce dillerini içeriyor
+const translations = {
+  tr: {
+    nav_home: "Anasayfa",
+    nav_about: "Hakkımızda",
+    nav_services: "Hizmetlerimiz",
+    nav_contact: "İletişim",
+    web_title: "Web Geliştirme",
+    web_text: "Yaratıcı ve kullanıcı dostu web çözümleri ile işinizi büyütün.",
+    mobile_title: "Mobil Uygulama",
+    mobile_text: "Mobil platformlarda kullanıcıya ulaşmanın en hızlı yolunu keşfedin.",
+    dijital_title: "Dijital Pazarlama",
+    dijital_text: "Markanızı dijital dünyada ön plana çıkaracak stratejiler.",
+    e_title: "E-Ticaret Çözümleri",
+    e_text: "Online satışlarınızı artırmak için özel e-ticaret çözümleri.",
+    seo_title: "SEO ve Analitik",
+    seo_text: "Web sitenizi arama motorlarında üst sıralara taşıyın.",
+    footer_text: "&copy; 2024 Tüm Hakları Saklıdır.",
+    footer_company: "Soluiton Software A.Ş."
+  },
+  eng: {
+    nav_home: "Home",
+    nav_about: "About Us",
+    nav_services: "Our Services",
+    nav_contact: "Contact",
+    web_title: "Web Development",
+    web_text: "Grow your business with creative and user-friendly web solutions.",
+    mobile_title: "Mobile Application",
+    mobile_text: "Discover the fastest way to reach users on mobile platforms.",
+    dijital_title: "Digital Marketing",
+    dijital_text: "Strategies to highlight your brand in the digital world.",
+    e_title: "E-Commerce Solutions",
+    e_text: "Custom e-commerce solutions to boost your online sales.",
+    seo_title: "SEO and Analytics",
+    seo_text: "Bring your website to the top of search engines.",
+    footer_text: "&copy; 2024 All Rights Reserved.",
+    footer_company: "Soluiton Software Inc."
+  }
+};
+
+// Dil güncelleme fonksiyonu
+function updateLanguage(lang) {
+  document.querySelectorAll('[data-key]').forEach((element) => {
+    const key = element.getAttribute('data-key');
+    element.textContent = translations[lang][key];
+  });
+}
+
+// Dil Seçici Buton Kontrolü
+const languageSwitch = document.getElementById('languageSwitch');
+languageSwitch.addEventListener('click', () => {
+  const isActive = languageSwitch.classList.toggle('active');
+  const lang = isActive ? 'eng' : 'tr';
+  updateLanguage(lang);
+});
+    
+  // Bildirim mesajı fonksiyonu
+function showNotification(message) {
+  // Bildirim öğesini oluştur
+  let notification = document.createElement("div");
+  notification.classList.add("notification");
+  notification.innerText = message;
+  document.body.appendChild(notification);
+
+  // Bildirimi görünür yap
+  setTimeout(() => {
+    notification.classList.add("show");
+  }, 100);
+
+  // 2.5 saniye sonra bildirimi kaldır
+  setTimeout(() => {
+    notification.classList.remove("show");
+    setTimeout(() => {
+      notification.remove();
+    }, 250);
+  }, 2500);
+}
+
+// Tüm service-box öğelerine tıklama olayı ekle
+document.querySelectorAll(".service-box").forEach((box) => {
+  box.addEventListener("click", () => {
+    // Eğer zaten tam ekran ise çıkar
+    if (box.classList.contains("fullscreen")) {
+      box.classList.remove("fullscreen");
+    } else {
+      // Diğer kutulardaki tam ekran sınıfını kaldır
+      document.querySelectorAll(".service-box").forEach((el) => el.classList.remove("fullscreen"));
+      // Tıklanan kutuya tam ekran sınıfını ekle
+      box.classList.add("fullscreen");
+
+      // Bildirim mesajını göster
+      showNotification("Çıkmak için tekrar tıklayınız");
+    }
+  });
+});
+
+
+
+  AOS.init({
+  duration: 1000,
+  once: true,
+});
+    
+    </script>
+</body>
+</html>
