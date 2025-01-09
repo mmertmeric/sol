@@ -1,2 +1,2 @@
-# sol
+# soluiton.com
 soluiton website
